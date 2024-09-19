@@ -30,11 +30,8 @@ export default function ProductList(){
                     onClick={getProducts}>Refresh</button>
                 </div>
                 <div className="col">
-
                 </div>
             </div>
-
-
             <table className='table'>
                 <thead>
                     <tr>
