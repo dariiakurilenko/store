@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Navbar } from './components/layout';
+import { Footer } from './components/layout';
+import Home from './pages/Home'
 
 function App(){
   return(
     <>
-      <h2>Welcome to our website, Daria!</h2>
+      <Navbar />
+      <Home />
+      <Footer />
     </>
   )
 }
