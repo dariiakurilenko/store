@@ -1,0 +1,23 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Iphone 15 pro max",
+            "brand": "Apple",
+            "category": "phones",
+            "price": 100000,
+            "description": "new apple product",
+            "createdAt": "2024-09-19",
+            "url": "https://istoreapple.ru/image/cache/catalog/Add/15%20pro%20max/iphone-15-pro-max-grey-452x552.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Laptop Zenbook",
+            "brand": "Asus",
+            "category": "laptop",
+            "price": 120000,
+            "description": "new laptop",
+            "createdAt": "2024-09-19"
+        }
+    ]
+}
