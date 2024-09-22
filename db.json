@@ -19,16 +19,6 @@
       "description": "new laptop",
       "createdAt": "2024-09-19",
       "url": "https://relise.ru/image/cache/catalog/noutbuki/2/noutbuki-asus-26622-02-1-800x500.jpg"
-    },
-    {
-      "name": "Led TV",
-      "brand": "noname",
-      "category": "Other",
-      "price": "990",
-      "description": "wonderful tv",
-      "url": "https://c.dns-shop.ru/thumb/st4/fit/320/250/3980e439d78622292617318bdc7620e6/10ac2c59e0f810145701cba1181e9a7798a2a283af00749d407a920c664a2db7.jpg",
-      "createdAt": "2024-09-22T08:06:50.068Z",
-      "id": 3
     }
   ]
 }
