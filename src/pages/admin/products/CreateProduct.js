@@ -52,12 +52,13 @@ export default function CreateProduct(){
                             <label className="col-sm-4 col-form-label">Category</label>
                             <div className="col-sm-8">
                                 <select className="form-select" name='category'>
-                                    <option value='Other'>Other</option>
-                                    <option value='Phones'>Phones</option>
-                                    <option value='Computers'>Computers</option>
-                                    <option value='Cameras'>Cameras</option>
+                                    <option value='other'>other</option>
+                                    <option value='phones'>phones</option>
+                                    <option value='computers'>computers</option>
+                                    <option value='cameras'>cameras</option>
                                     <option value='TV'>TV</option>
-                                    <option value='Accessorises'>Accessorises</option>
+                                    <option value='accessorises'>accessorises</option>
+                                    <option value='headphones'>headphones</option>
                                 </select>
                             </div>
                         </div>
@@ -77,7 +78,7 @@ export default function CreateProduct(){
                         </div>
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Image-URL</label>
-                            <div className="col-sm-8">s
+                            <div className="col-sm-8">
                                 <input className="form-control" name="url" />
                                 <span className="text-danger"></span>
                             </div>

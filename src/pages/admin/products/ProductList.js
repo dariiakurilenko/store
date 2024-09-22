@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 export default function ProductList(){
+    const [value, setValue] = useState('')
     const [products, setProducts] = useState([]);
     function getProducts(){
         fetch("http://localhost:3004/products?_sort=id&_order=desc")
@@ -34,6 +35,10 @@ export default function ProductList(){
             alert('Unable to delete the product')
         })
     }
+
+    const filteredProducts = products.filter(product => 
+        product.name.toLowerCase().includes(value.toLowerCase())
+    )
     return(
         <div className="container my-4">
             <h2 className="text-center mb-4">Products</h2>
@@ -45,6 +50,13 @@ export default function ProductList(){
                     onClick={getProducts}>Refresh</button>
                 </div>
                 <div className="col">
+                    <input
+                        type="text"
+                        placeholder="Search product..."
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
+                        className="form-control"
+                    />
                 </div>
             </div>
             <table className='table'>
@@ -62,7 +74,7 @@ export default function ProductList(){
                 </thead>
                 <tbody>
                     {
-                        products.map((product, index) => {
+                        filteredProducts.map((product, index) => {
                             return (
                                 <tr key={index}>
                                     <td>{product.id}</td>
@@ -71,7 +83,7 @@ export default function ProductList(){
                                     <td>{product.category}</td>
                                     <td>{product.price}$</td>
                                     <td><img src={product.url} width='100' alt={product.name}/></td>
-                                    <td>{product.createdAt}</td>
+                                    <td>{product.createdAt.slice(0,10)}</td>
                                     <td style={{ width: "10px", whiteSpace: 'nowrap'}}>
                                         <Link className='btn btn-primary btn-sm me-1'
                                             to={'/admin/products/edit' + '/' + product.id}>Edit</Link>

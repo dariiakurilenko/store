@@ -14,11 +14,161 @@
       "id": 2,
       "name": "Laptop Zenbook",
       "brand": "Asus",
-      "category": "laptop",
-      "price": 120000,
+      "category": "computers",
+      "price": 1200,
       "description": "new laptop",
       "createdAt": "2024-09-19",
       "url": "https://relise.ru/image/cache/catalog/noutbuki/2/noutbuki-asus-26622-02-1-800x500.jpg"
+    },
+    {
+      "id": 3,
+      "name": "LED-TV",
+      "brand": "Haier",
+      "category": "TV",
+      "price": 3000,
+      "description": "new TV",
+      "createdAt": "2024-09-22",
+      "url": "https://c.dns-shop.ru/thumb/st4/fit/320/250/c5389fcf740d5c9fb47c51dd52af20e1/7ce3441423883acb85af502320ff3128690cd05e91db9e7e7b12b7f45148f461.jpg"
+    },
+    {
+      "id": 4,
+      "name": "AirPods 2",
+      "brand": "Apple",
+      "category": "headphones",
+      "price": 400,
+      "description": "new headphones",
+      "createdAt": "2024-09-22",
+      "url": "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/5d799e8b1e74dfd7891016058c4b206d/f3bff68a47153e301acbfde7b4c594145181645d08845191816e2035e0402690.jpg.webp"
+    },
+    {
+      "id": 5,
+      "name": "Marshall HeadPhones",
+      "brand": "Marshall",
+      "category": "headphones",
+      "price": 1000,
+      "description": "new headphones",
+      "createdAt": "2024-09-22",
+      "url": "https://c.dns-shop.ru/thumb/st4/fit/500/500/b82e970016b73cfff7f319e1886dffaa/b3caa95705c1e92f6d442deb5531405a7d7268817e53ad9f8e757c3b9f5f3d33.jpg"
+    },
+    {
+      "id": 6,
+      "name": "GoPro camera",
+      "brand": "GoPro",
+      "category": "cameras",
+      "price": 1200,
+      "description": "new camera",
+      "createdAt": "2024-09-22",
+      "url": "https://c.dns-shop.ru/thumb/st1/fit/320/250/0936e37e0e368cf423f1cbb88dbe99cd/ff59f34823910223874756fffb569173da53fbcd378b9edbeb926354c35bd56f.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Canon camera",
+      "brand": "Canon",
+      "category": "cameras",
+      "price": 1234,
+      "description": "new camera",
+      "createdAt": "2024-09-22",
+      "url": "https://c.dns-shop.ru/thumb/st1/fit/200/200/bd31547221cde9e7093d07f2a930847a/42b08bc250a403778e03943b526e871eaf8896b823ae2e1be0df8d8ea3669029.jpg.webp"
+    },
+    {
+      "id": 8,
+      "name": "Computer mouse",
+      "brand": "Ardor Gaming",
+      "category": "accessorises",
+      "price": 100,
+      "description": "new mouse",
+      "createdAt": "2024-09-22",
+      "url": "https://c.dns-shop.ru/thumb/st4/fit/200/200/b06541c431b5b8440cf2cb52ccbf72d7/187ca6574a0f321cbf1a4a36ed78b152f8266415dfdd1d220255ab95bf17f58c.jpg.webp"
+    },
+    {
+      "id": 9,
+      "name": "Iphone 15 pro max",
+      "brand": "Apple",
+      "category": "phones",
+      "price": 1300,
+      "description": "new apple product",
+      "createdAt": "2024-09-19",
+      "url": "https://istoreapple.ru/image/cache/catalog/Add/15%20pro%20max/iphone-15-pro-max-grey-452x552.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Laptop Zenbook",
+      "brand": "Asus",
+      "category": "computers",
+      "price": 1200,
+      "description": "new laptop",
+      "createdAt": "2024-09-19",
+      "url": "https://relise.ru/image/cache/catalog/noutbuki/2/noutbuki-asus-26622-02-1-800x500.jpg"
+    },
+    {
+      "id": 11,
+      "name": "LED-TV",
+      "brand": "Haier",
+      "category": "TV",
+      "price": 3000,
+      "description": "new TV",
+      "createdAt": "2024-09-22",
+      "url": "https://c.dns-shop.ru/thumb/st4/fit/320/250/c5389fcf740d5c9fb47c51dd52af20e1/7ce3441423883acb85af502320ff3128690cd05e91db9e7e7b12b7f45148f461.jpg"
+    },
+    {
+      "id": 12,
+      "name": "AirPods 2",
+      "brand": "Apple",
+      "category": "headphones",
+      "price": 400,
+      "description": "new headphones",
+      "createdAt": "2024-09-22",
+      "url": "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/5d799e8b1e74dfd7891016058c4b206d/f3bff68a47153e301acbfde7b4c594145181645d08845191816e2035e0402690.jpg.webp"
+    },
+    {
+      "id": 13,
+      "name": "Marshall HeadPhones",
+      "brand": "Marshall",
+      "category": "headphones",
+      "price": 1000,
+      "description": "new headphones",
+      "createdAt": "2024-09-22",
+      "url": "https://c.dns-shop.ru/thumb/st4/fit/500/500/b82e970016b73cfff7f319e1886dffaa/b3caa95705c1e92f6d442deb5531405a7d7268817e53ad9f8e757c3b9f5f3d33.jpg"
+    },
+    {
+      "id": 14,
+      "name": "GoPro camera",
+      "brand": "GoPro",
+      "category": "cameras",
+      "price": 1200,
+      "description": "new camera",
+      "createdAt": "2024-09-22",
+      "url": "https://c.dns-shop.ru/thumb/st1/fit/320/250/0936e37e0e368cf423f1cbb88dbe99cd/ff59f34823910223874756fffb569173da53fbcd378b9edbeb926354c35bd56f.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Canon camera",
+      "brand": "Canon",
+      "category": "cameras",
+      "price": 1234,
+      "description": "new camera",
+      "createdAt": "2024-09-22",
+      "url": "https://c.dns-shop.ru/thumb/st1/fit/200/200/bd31547221cde9e7093d07f2a930847a/42b08bc250a403778e03943b526e871eaf8896b823ae2e1be0df8d8ea3669029.jpg.webp"
+    },
+    {
+      "id": 16,
+      "name": "Computer mouse",
+      "brand": "Ardor Gaming",
+      "category": "accessorises",
+      "price": "119.99",
+      "description": "new mouse",
+      "createdAt": "2024-09-22",
+      "url": "https://c.dns-shop.ru/thumb/st4/fit/200/200/b06541c431b5b8440cf2cb52ccbf72d7/187ca6574a0f321cbf1a4a36ed78b152f8266415dfdd1d220255ab95bf17f58c.jpg.webp"
+    },
+    {
+      "name": "Computer mouse",
+      "brand": "Lamzu",
+      "category": "accessorises",
+      "price": 300,
+      "description": "it is wonderful",
+      "url": "https://c.dns-shop.ru/thumb/st4/fit/320/250/67317ca2e988be139806ee80af4f92f8/aa2fa7f9d896f7ab665e57e5ef6b47ae500c43c9726d19745bf9156117e35ff5.jpg",
+      "createdAt": "2024-09-22T09:15:15.512Z",
+      "id": 17
     }
   ]
 }
