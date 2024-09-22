@@ -37,7 +37,7 @@ export function Navbar(){
 
 export function Footer(){
     return(
-        <div className="text-center p-4 border-top">
+        <div className="text-center p-4 border-top fixed-bottom">
             <img src='/cart.png' alt='cart image' width="30" className="me-2" />
             This store-app is made by Daria Kurilenko, 2024
         </div>

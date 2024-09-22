@@ -26,5 +26,5 @@ server.post('/products/', (req, res, next) => {
 // Use default router
 server.use(router)
 server.listen(3004, () => {
-  console.log('JSON Server is running')
+  console.log('JSON Server is running at http://localhost:3004/products')
 })
