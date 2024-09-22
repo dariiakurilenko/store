@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
+import React from "react";
 
 export default function CreateProduct(){
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [showSuccessModal, setShowSuccessModal] = React.useState(false);
     async function handleSubmit(event){
         event.preventDefault()
         const formData = new FormData(event.target);
@@ -15,9 +17,13 @@ export default function CreateProduct(){
                 },
                 body: jsonData
             })
-
             if (response.ok){
-                navigate("/admin/products")
+                const createdProduct = await response.json();
+                setShowSuccessModal(true);
+                setTimeout(() => {
+                    setShowSuccessModal(false);
+                    navigate(`/admin/products/${createdProduct.id}`);
+                }, 2000)
             }else if(response.status === 400){
                 alert('Validation errors')
             }else{
@@ -71,8 +77,7 @@ export default function CreateProduct(){
                         </div>
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Description</label>
-                            <div className="col-sm-8">
-                                <input className="form-control" name="description" rows='4' />
+                            <div className="col-sm-8"><input className="form-control" name="description" rows='4' />
                                 <span className="text-danger"></span>
                             </div>
                         </div>
@@ -94,6 +99,20 @@ export default function CreateProduct(){
                     </form>
                 </div>
             </div>
+            {showSuccessModal && (
+                <div className="modal fade show" style={{ display: 'block' }} tabIndex="-1" role="dialog">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">success!</h5>   
+                            </div>
+                            <div className="modal-body">
+                                <p>Successfully added!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
