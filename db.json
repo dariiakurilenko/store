@@ -2,11 +2,11 @@
   "products": [
     {
       "id": 1,
-      "name": "Iphone 15 pro max",
+      "name": "Iphone 15 pro max super pro",
       "brand": "Apple",
       "category": "phones",
-      "price": 1300,
-      "description": "new apple product",
+      "price": "1450",
+      "description": "new apple product, very modern",
       "createdAt": "2024-09-19",
       "url": "https://istoreapple.ru/image/cache/catalog/Add/15%20pro%20max/iphone-15-pro-max-grey-452x552.jpg"
     },

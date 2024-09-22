@@ -80,7 +80,7 @@ export default function EditProduct(){
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Category</label>
                             <div className="col-sm-8">
-                                <select className="form-select" name='category'>
+                                <select className="form-select" name='category' defaultValue={initialData.category}>
                                 <option value='other'>other</option>
                                     <option value='phones'>phones</option>
                                     <option value='computers'>computers</option>

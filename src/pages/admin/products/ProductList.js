@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 export default function ProductList(){
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState('');
     const [products, setProducts] = useState([]);
-    function getProducts(){
-        fetch("http://localhost:3004/products?_sort=id&_order=desc")
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+    const [sortOrder, setSortOrder] = useState('asc');
+    const itemsPerPage = 10;
+    function getProducts(currentPage, sortOrder = 'asc'){
+        fetch(`http://localhost:3004/products?_page=${currentPage}&_limit=${itemsPerPage}&_sort=price&_order=${sortOrder}`)
         .then(response => {
             if(response.ok){
+                const totalCount = response.headers.get('X-Total-Count');
+                setTotalPages(Math.ceil(totalCount / itemsPerPage));
                 return response.json()
             }
             throw new Error()
@@ -19,7 +25,9 @@ export default function ProductList(){
         })
     }
 
-    useEffect(getProducts, [])
+    useEffect(() => {
+        getProducts(currentPage, sortOrder);
+    }, [currentPage, sortOrder]);
 
     function deleteProduct(id){
         fetch("http://localhost:3004/products/" + id, {
@@ -29,7 +37,7 @@ export default function ProductList(){
             if(!response.ok){
                 throw new Error()
             }
-            getProducts()
+            getProducts(currentPage, sortOrder)
         })
         .catch(error => {
             alert('Unable to delete the product')
@@ -39,15 +47,18 @@ export default function ProductList(){
     const filteredProducts = products.filter(product => 
         product.name.toLowerCase().includes(value.toLowerCase())
     )
-    return(
-        <div className="container my-4">
-            <h2 className="text-center mb-4">Products</h2>
-
+    const handleSortChange = (order) => {
+        setSortOrder(order);
+        getProducts(currentPage, order);
+    };
+    return (
+        <div className="container my-4 mx-3">
+            <h2 className="text-center mb-4 text-primary">Products</h2>
             <div className="row mb-3">
                 <div className="col">
                     <Link className="btn btn-primary me-1" to="/admin/products/create" role='button'>Create Product</Link>
-                    <button type='button' className="btn btn-outline-primary"
-                    onClick={getProducts}>Refresh</button>
+                    <button type='button' className="btn btn-outline-primary" onClick={getProducts}>Refresh</button>
+                    
                 </div>
                 <div className="col">
                     <input
@@ -58,44 +69,56 @@ export default function ProductList(){
                         className="form-control"
                     />
                 </div>
+                <div className="col">
+                    <select onChange={(e) => handleSortChange(e.target.value)} className="form-select">
+                        <option value="asc">sort by descending price</option>
+                        <option value="desc">sort by ascending price</option>
+                    </select>
+                </div>
             </div>
-            <table className='table'>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Brand</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th>Image</th>
-                        <th>Created At</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        filteredProducts.map((product, index) => {
-                            return (
-                                <tr key={index}>
-                                    <td>{product.id}</td>
-                                    <td>{product.name}</td>
-                                    <td>{product.brand}</td>
-                                    <td>{product.category}</td>
-                                    <td>{product.price}$</td>
-                                    <td><img src={product.url} width='100' alt={product.name}/></td>
-                                    <td>{product.createdAt.slice(0,10)}</td>
-                                    <td style={{ width: "10px", whiteSpace: 'nowrap'}}>
-                                        <Link className='btn btn-primary btn-sm me-1'
-                                            to={'/admin/products/edit' + '/' + product.id}>Edit</Link>
-                                        <button type='button' className='btn btn-danger btn-sm'
-                                            onClick={() => deleteProduct(product.id)}>Delete</button>
-                                    </td>
-                                </tr>
-                            )
-                        })
-                    }
-                </tbody>
-            </table>
+            <div className="row">
+                {
+                    filteredProducts.map((product, index) => (
+                        <div className="col-md-4 mb-4" key={index}>
+                            <div className="card" style={{ height: '600px', borderRadius: '15px', overflow: 'hidden' }}>
+                                <img src={product.url} className="card-img-top" alt={product.name} style={{ height: '400px', width: '400px', objectFit: 'contain' }}/>
+                                <div className="card-body">
+                                    <h5 className="card-title">{product.name}</h5>
+                                    <p className="card-text">{product.price}$</p>
+                                    <div mt-auto>
+                                    <Link to={`/admin/products/${product.id}`} className="btn btn-primary mr-5">View</Link>
+                                    <Link className='btn btn-secondary btn-sm me-1 ms-2' to={'/admin/products/edit/' + product.id}>Edit</Link>
+                                    <button type='button' className='btn btn-danger btn-sm' onClick={() => deleteProduct(product.id)}>Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        
+    
+       
+        
+
+
+        
+    
+            <nav aria-label='Page navigation'>
+                <ul className='pagination justify-content-center'>
+                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                        <button className='page-link' onclick={() => setCurrentPage(prev => Math.max(prev-1, 1))}>Previous</button>
+                    </li>
+                    {Array.from({length: totalPages}, (_, index) => (
+                        <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+                        <button className="page-link" onClick={() => setCurrentPage(index + 1)}>{index + 1}</button>
+                    </li>
+                    ))}
+                    <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                        <button className="page-link" onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}>Next</button>
+                    </li>
+                </ul>
+            </nav>
         </div>
     )
 }
