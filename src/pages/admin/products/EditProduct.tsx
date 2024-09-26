@@ -1,9 +1,21 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import React, { useEffect } from "react";
 
-export default function EditProduct(){
-    const params = useParams()
-    const [initialData, setInitialData] = React.useState()
+
+interface Product  {
+    id: number;
+    name: string;
+    brand: string;
+    category: string;
+    price: number;
+    description: string;
+    createdAt: string;
+    url: string;
+};
+
+const EditProduct: React.FC = () => {
+    const params = useParams<{ id: string }>()
+    const [initialData, setInitialData] = React.useState<Product | null>(null)
     const navigate = useNavigate()
 
     function getProduct(){
@@ -101,7 +113,7 @@ export default function EditProduct(){
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Description</label>
                             <div className="col-sm-8">
-                                <input className="form-control" name="description" rows='4' defaultValue={initialData.description}/>
+                                <input className="form-control" name="description" defaultValue={initialData.description}/>
                                 <span className="text-danger"></span>
                             </div>
                         </div>
@@ -133,3 +145,5 @@ export default function EditProduct(){
         </div>
     )
 }
+
+export default EditProduct;

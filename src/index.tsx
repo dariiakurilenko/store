@@ -10,6 +10,7 @@ import ProductList from './pages/admin/products/ProductList';
 import CreateProduct from './pages/admin/products/CreateProduct';
 import EditProduct from './pages/admin/products/EditProduct';
 import ProductPage from './pages/admin/products/ProductPage';
+import ProfilePage from './pages/ProfilePage'
 
 function App(){
   return(
@@ -22,6 +23,7 @@ function App(){
         <Route path='/admin/products/create' element={<CreateProduct />}/>
         <Route path='/admin/products/edit/:id' element={<EditProduct />}/>
         <Route path='/admin/products/:id' element={<ProductPage />} />
+        <Route path='/admin/profile' element={<ProfilePage />} />
         <Route path='*' element={<NotFound />}/>
       </Routes>
       <Footer />
@@ -30,10 +32,17 @@ function App(){
 }
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const rootElement = document.getElementById('root');
+
+if (rootElement) {
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    );
+} else {
+    console.error("Element with id 'root' not found.");
+}
+
 

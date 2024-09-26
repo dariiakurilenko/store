@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 
-export default function CreateProduct(){
+const CreateProduct: React.FC = () =>{
     const navigate = useNavigate();
-    const [showSuccessModal, setShowSuccessModal] = React.useState(false);
-    async function handleSubmit(event){
+    const [showSuccessModal, setShowSuccessModal] = React.useState<boolean>(false);
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault()
-        const formData = new FormData(event.target);
+        const formData = new FormData(event.currentTarget);
         const data = Object.fromEntries(formData.entries());
         const jsonData = JSON.stringify(data);
         try{
@@ -43,14 +43,14 @@ export default function CreateProduct(){
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Name</label>
                             <div className="col-sm-8">
-                                <input className="form-control" name="name" />
+                                <input className="form-control" name="name" required/>
                                 <span className="text-danger"></span>
                             </div>
                         </div>
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Brand</label>
                             <div className="col-sm-8">
-                                <input className="form-control" name="brand" />
+                                <input className="form-control" name="brand" required/>
                                 <span className="text-danger"></span>
                             </div>
                         </div>
@@ -71,20 +71,20 @@ export default function CreateProduct(){
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Price</label>
                             <div className="col-sm-8">
-                                <input className="form-control" name="price" type='number' min="1" step='0.01' />
+                                <input className="form-control" name="price" type='number' min="1" step='0.01' required/>
                                 <span className="text-danger"></span>
                             </div>
                         </div>
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Description</label>
-                            <div className="col-sm-8"><input className="form-control" name="description" rows='4' />
+                            <div className="col-sm-8"><input className="form-control" name="description" required />
                                 <span className="text-danger"></span>
                             </div>
                         </div>
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Image-URL</label>
                             <div className="col-sm-8">
-                                <input className="form-control" name="url" />
+                                <input className="form-control" name="url" required/>
                                 <span className="text-danger"></span>
                             </div>
                         </div>
@@ -100,7 +100,7 @@ export default function CreateProduct(){
                 </div>
             </div>
             {showSuccessModal && (
-                <div className="modal fade show" style={{ display: 'block' }} tabIndex="-1" role="dialog">
+                <div className="modal fade show" style={{ display: 'block' }} tabIndex={-1} role="dialog">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -116,3 +116,5 @@ export default function CreateProduct(){
         </div>
     )
 }
+
+export default CreateProduct

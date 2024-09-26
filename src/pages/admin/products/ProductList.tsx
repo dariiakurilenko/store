@@ -1,18 +1,33 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import React from 'react';
+
+interface Product  {
+    id: number;
+    name: string;
+    brand: string;
+    category: string;
+    price: number;
+    description: string;
+    createdAt: string;
+    url: string;
+};
+
+type SortOrder = 'asc' | 'desc';
+
 export default function ProductList(){
-    const [value, setValue] = useState('');
-    const [products, setProducts] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
-    const [sortOrder, setSortOrder] = useState('asc');
+    const [value, setValue] = useState<string>('');
+    const [products, setProducts] = useState<Product[]>([]);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [totalPages, setTotalPages] = useState<number>(0);
+    const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
     const itemsPerPage = 10;
-    function getProducts(currentPage, sortOrder = 'asc'){
+    function getProducts(currentPage: number, sortOrder: SortOrder = 'asc'){
         fetch(`http://localhost:3004/products?_page=${currentPage}&_limit=${itemsPerPage}&_sort=price&_order=${sortOrder}`)
         .then(response => {
             if(response.ok){
                 const totalCount = response.headers.get('X-Total-Count');
-                setTotalPages(Math.ceil(totalCount / itemsPerPage));
+                setTotalPages(Math.ceil(Number(totalCount) / itemsPerPage));
                 return response.json()
             }
             throw new Error()
@@ -29,7 +44,7 @@ export default function ProductList(){
         getProducts(currentPage, sortOrder);
     }, [currentPage, sortOrder]);
 
-    function deleteProduct(id){
+    function deleteProduct(id: number){
         fetch("http://localhost:3004/products/" + id, {
             method: "DELETE"
         })
@@ -47,9 +62,12 @@ export default function ProductList(){
     const filteredProducts = products.filter(product => 
         product.name.toLowerCase().includes(value.toLowerCase())
     )
-    const handleSortChange = (order) => {
+    const handleSortChange = (order: SortOrder) => {
         setSortOrder(order);
         getProducts(currentPage, order);
+    };
+    const handleRefresh = () => {
+        getProducts(currentPage, sortOrder);
     };
     return (
         <div className="container my-4 mx-3">
@@ -57,7 +75,7 @@ export default function ProductList(){
             <div className="row mb-3">
                 <div className="col">
                     <Link className="btn btn-primary me-1" to="/admin/products/create" role='button'>Create Product</Link>
-                    <button type='button' className="btn btn-outline-primary" onClick={getProducts}>Refresh</button>
+                    <button type='button' className="btn btn-outline-primary" onClick={handleRefresh}>Refresh</button>
                     
                 </div>
                 <div className="col">
@@ -70,7 +88,7 @@ export default function ProductList(){
                     />
                 </div>
                 <div className="col">
-                    <select onChange={(e) => handleSortChange(e.target.value)} className="form-select">
+                    <select onChange={(e) => handleSortChange(e.target.value as 'asc' | 'desc')} className="form-select">
                         <option value="asc">sort by descending price</option>
                         <option value="desc">sort by ascending price</option>
                     </select>
@@ -107,7 +125,7 @@ export default function ProductList(){
             <nav aria-label='Page navigation'>
                 <ul className='pagination justify-content-center'>
                     <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                        <button className='page-link' onclick={() => setCurrentPage(prev => Math.max(prev-1, 1))}>Previous</button>
+                        <button className='page-link' onClick={() => setCurrentPage(prev => Math.max(prev-1, 1))}>Previous</button>
                     </li>
                     {Array.from({length: totalPages}, (_, index) => (
                         <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>

@@ -1,9 +1,19 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-const ProductPage = () => {
-    const { id } = useParams();
-    const [product, setProduct] = React.useState([]);
+interface Product  {
+    id: number;
+    name: string;
+    brand: string;
+    category: string;
+    price: number;
+    description: string;
+    createdAt: string;
+    url: string;
+};
+const ProductPage: React.FC = () => {
+    const { id } = useParams<{ id: string }>();
+    const [product, setProduct] = React.useState<Product | null>(null);
     const [loading, setLoading] = React.useState(true);
     
     React.useEffect(() => {
@@ -13,7 +23,7 @@ const ProductPage = () => {
                 if (!response.ok){
                     throw new Error('Unable to get data about the product');
                 }
-                const data = await response.json();
+                const data: Product = await response.json();
                 setProduct(data)
             }catch(error){
                 alert('Unable to get data')

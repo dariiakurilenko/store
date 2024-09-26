@@ -72,10 +72,10 @@
     },
     {
       "id": 8,
-      "name": "Computer mouse",
+      "name": "Computer mouse super ",
       "brand": "Ardor Gaming",
       "category": "accessorises",
-      "price": 100,
+      "price": "100",
       "description": "new mouse",
       "createdAt": "2024-09-22",
       "url": "https://c.dns-shop.ru/thumb/st4/fit/200/200/b06541c431b5b8440cf2cb52ccbf72d7/187ca6574a0f321cbf1a4a36ed78b152f8266415dfdd1d220255ab95bf17f58c.jpg.webp"
@@ -89,16 +89,6 @@
       "description": "new apple product",
       "createdAt": "2024-09-19",
       "url": "https://istoreapple.ru/image/cache/catalog/Add/15%20pro%20max/iphone-15-pro-max-grey-452x552.jpg"
-    },
-    {
-      "id": 10,
-      "name": "Laptop Zenbook",
-      "brand": "Asus",
-      "category": "computers",
-      "price": 1200,
-      "description": "new laptop",
-      "createdAt": "2024-09-19",
-      "url": "https://relise.ru/image/cache/catalog/noutbuki/2/noutbuki-asus-26622-02-1-800x500.jpg"
     },
     {
       "id": 11,
