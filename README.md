@@ -41,6 +41,7 @@ The technology stack used in the project:
 - Server part: Node.js (version 20)
 - Package Manager: npm
 - Routing: React Router (version 6)
+- Typescript
 
 I used a JSON server to work with the data.
 
