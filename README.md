@@ -1,6 +1,5 @@
 # Store app
 
-you can see my site here: https://dariiiakurilenko-store.netlify.app
 
 ## Available Scripts
 
