@@ -1,17 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import React, { useEffect } from "react";
-
-
-interface Product  {
-    id: number;
-    name: string;
-    brand: string;
-    category: string;
-    price: number;
-    description: string;
-    createdAt: string;
-    url: string;
-};
+import Product  from '../../../interfaces'
 
 const EditProduct: React.FC = () => {
     const params = useParams<{ id: string }>()
@@ -30,15 +19,20 @@ const EditProduct: React.FC = () => {
             setInitialData(data)
         })
         .catch(error => {
+            console.error('Ошибка при получении данных:', error);
             alert('Unable to read the product details')
         })
     }
 
     useEffect(getProduct, [])
-    async function handleSubmit(event){
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault()
-        const formData = new FormData(event.target);
-        const data = Object.fromEntries(formData.entries());
+        const formData = new FormData(event.currentTarget);
+        const data: { [key: string]: any } = {};
+
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
         const jsonData = JSON.stringify(data);
         try{
             const response = await fetch('http://localhost:3004/products/' + params.id, {
@@ -58,6 +52,7 @@ const EditProduct: React.FC = () => {
             }
         }
         catch(error){
+            console.error('Ошибка при получении данных:', error); 
             alert('Unable to connect to the server')
         }
     }

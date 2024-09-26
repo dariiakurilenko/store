@@ -1,16 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import Product  from '../../../interfaces'
 
-interface Product  {
-    id: number;
-    name: string;
-    brand: string;
-    category: string;
-    price: number;
-    description: string;
-    createdAt: string;
-    url: string;
-};
 const ProductPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [product, setProduct] = React.useState<Product | null>(null);

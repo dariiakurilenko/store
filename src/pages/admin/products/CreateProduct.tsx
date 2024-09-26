@@ -7,7 +7,11 @@ const CreateProduct: React.FC = () =>{
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault()
         const formData = new FormData(event.currentTarget);
-        const data = Object.fromEntries(formData.entries());
+        const data: { [key: string]: any } = {};
+        
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
         const jsonData = JSON.stringify(data);
         try{
             const response = await fetch('http://localhost:3004/products', {
@@ -31,6 +35,7 @@ const CreateProduct: React.FC = () =>{
             }
         }
         catch(error){
+            console.error('Ошибка при получении данных:', error); 
             alert('Unable to connect to the server')
         }
     }

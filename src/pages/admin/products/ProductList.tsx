@@ -1,17 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import React from 'react';
+import Product  from '../../../interfaces'
 
-interface Product  {
-    id: number;
-    name: string;
-    brand: string;
-    category: string;
-    price: number;
-    description: string;
-    createdAt: string;
-    url: string;
-};
 
 type SortOrder = 'asc' | 'desc';
 
@@ -36,6 +27,7 @@ export default function ProductList(){
             setProducts(data)
         })
         .catch(err => {
+            console.error('Ошибка при получении данных:', err);
             alert('Unable to get the data')
         })
     }
@@ -55,6 +47,7 @@ export default function ProductList(){
             getProducts(currentPage, sortOrder)
         })
         .catch(error => {
+            console.error('Ошибка при получении данных:', error);
             alert('Unable to delete the product')
         })
     }
